@@ -1,5 +1,6 @@
 <?php
 
+use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
 
@@ -50,5 +51,21 @@ class AppKernel extends Kernel
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
         $loader->load($this->getRootDir().'/config/config_'.$this->getEnvironment().'.yml');
+        $this->loadServices($loader);
+    }
+
+    protected function loadServices(LoaderInterface $loader)
+    {
+        $dir = __DIR__ . '/config/services';
+
+        $files =
+            (new Finder())
+                ->in($dir)
+                ->name('*.yml')
+                ->files();
+
+        foreach ($files as $file) {
+            $loader->load($dir . '/' . $file->getFilename());
+        }
     }
 }
