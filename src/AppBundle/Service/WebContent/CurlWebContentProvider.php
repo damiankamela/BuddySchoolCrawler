@@ -39,7 +39,10 @@ class CurlWebContentProvider implements WebContentProviderInterface
      */
     protected function getClient(string $url)
     {
-        return new CurlRequest($url);
+       $curl = new CurlRequest($url);
+       $curl->setOption(CURLOPT_RETURNTRANSFER, 1);
+
+       return $curl;
     }
 
     /**
