@@ -1,8 +1,8 @@
 <?php
 
-namespace Tests\AppBundle\Service\WebContent;
+namespace Tests\AppBundle\Service\WebContent\Request;
 
-use AppBundle\Service\WebContent\Request;
+use AppBundle\Service\WebContent\Request\Request;
 use PHPUnit\Framework\TestCase;
 
 class RequestTest extends TestCase

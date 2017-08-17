@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Service\WebContent;
+namespace AppBundle\Service\WebContent\Request;
 
 class Request
 {
