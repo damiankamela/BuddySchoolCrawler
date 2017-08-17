@@ -1,0 +1,5 @@
+services:
+    AppBundle\Service\Crawler\BuddySchoolProfileFetcher:
+        autowire: true
+        calls:
+            - [setBaseUrl, ['%base_url%']]
