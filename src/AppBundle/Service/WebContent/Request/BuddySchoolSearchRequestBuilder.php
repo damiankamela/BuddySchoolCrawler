@@ -2,7 +2,7 @@
 
 namespace AppBundle\Service\WebContent\Request;
 
-class BuddySchoolSearchRequest extends Request
+class BuddySchoolSearchRequestBuilder extends RequestBuilder
 {
     /**
      * @param string $keyword

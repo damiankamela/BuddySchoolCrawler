@@ -2,7 +2,7 @@
 
 namespace AppBundle\Service\WebContent\Request;
 
-class Request
+class RequestBuilder
 {
     /** @var string */
     protected $method;

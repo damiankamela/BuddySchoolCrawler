@@ -2,10 +2,10 @@
 
 namespace Tests\AppBundle\Service\WebContent\Request;
 
-use AppBundle\Service\WebContent\Request\Request;
+use AppBundle\Service\WebContent\Request\RequestBuilder;
 use PHPUnit\Framework\TestCase;
 
-class RequestTest extends TestCase
+class RequestBuilderTest extends TestCase
 {
     /**
      * @test
@@ -18,7 +18,7 @@ class RequestTest extends TestCase
             'foo' => 'bar'
         ];
 
-        $request = new Request($method, $uri, $parameters);
+        $request = new RequestBuilder($method, $uri, $parameters);
 
         $request->setParameters(['bar' => 'baz']);
         $request->setParameter('abc', 123);
@@ -42,7 +42,7 @@ class RequestTest extends TestCase
             'foo' => 'bar'
         ];
 
-        $request = new Request($method, $uri, $parameters);
+        $request = new RequestBuilder($method, $uri, $parameters);
 
         $request->setParameters(['bar' => 'baz']);
         $request->setParameter('abc', 123);
