@@ -73,7 +73,7 @@ class BuddySchoolProfileFetcherTest extends TestCase
     /**
      * @test
      */
-    public function should_throw_exception_found_one_profile_try_fetch_secont()
+    public function should_throw_exception_found_one_profile_try_fetch_second()
     {
         $keyword = 'foo';
         $position = 1;
