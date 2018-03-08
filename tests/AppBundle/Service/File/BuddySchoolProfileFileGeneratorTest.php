@@ -17,19 +17,17 @@ class BuddySchoolProfileFileGeneratorTest extends TestCase
     protected $fileExporterMock;
 
     /** @var BuddySchoolProfileFetcher|Mock */
-    protected $profileFetcher;
+    protected $profileFetcherMock;
 
     public function setUp()
     {
-        $this->fileExporterMock = $this->getMockBuilder(FileExporterInterface::class)->getMock();
-        $this->profileFetcher = $this->getMockBuilder(BuddySchoolProfileFetcher::class)
-            ->disableOriginalConstructor()
-            ->getMock();
+        $this->fileExporterMock = $this->createMock(FileExporterInterface::class);
+        $this->profileFetcherMock = $this->createMock(BuddySchoolProfileFetcher::class);
 
         $this->generatorMock = $this->getMockBuilder(BuddySchoolProfileFileGenerator::class)
             ->setConstructorArgs([
                 $this->fileExporterMock,
-                $this->profileFetcher
+                $this->profileFetcherMock
             ])
             ->setMethods(['generateName'])
             ->getMock();
@@ -50,7 +48,7 @@ class BuddySchoolProfileFileGeneratorTest extends TestCase
             ->method('generateName')
             ->willReturn('foo.txt');
 
-        $this->profileFetcher
+        $this->profileFetcherMock
             ->expects(self::once())
             ->method('getProfileContent')
             ->with($keyword, $position)

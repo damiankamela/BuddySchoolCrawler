@@ -26,16 +26,14 @@ class CurlWebContentProviderTest extends TestCase
             ->setMethods(['getClient'])
             ->getMock();
 
-        $this->curlMock = $this->getMockBuilder(CurlRequest::class)
-            ->disableOriginalConstructor()
-            ->getMock();
+        $this->curlMock = $this->createMock(CurlRequest::class);
 
         $this->providerMock
             ->expects(self::any())
             ->method('getClient')
             ->willReturn($this->curlMock);
 
-        $this->loggerMock = $this->getMockBuilder(LoggerInterface::class)->getMock();
+        $this->loggerMock = $this->createMock(LoggerInterface::class);
 
         $this->providerMock->setLogger($this->loggerMock);
     }
