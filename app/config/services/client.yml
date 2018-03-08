@@ -1,8 +1,0 @@
-parameters:
-    base_url: 'https://buddyschool.com'
-
-services:
-    AppBundle\Service\WebContent\Request\BuddySchoolSearchRequestBuilder:
-        arguments:
-            - 'GET'
-            - '%base_url%/search'

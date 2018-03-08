@@ -1,0 +1,37 @@
+parameters:
+    locale: 'en'
+    base_url: 'https://buddyschool.com'
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    App\:
+        resource: '../src/*'
+        exclude: '../src/{Tests,Kernel.php}'
+
+    App\Controller\:
+        resource: '../src/Controller'
+        tags: ['controller.service_arguments']
+
+    App\Service\WebContent\Request\BuddySchoolSearchRequestBuilder:
+        arguments:
+            - 'GET'
+            - '%base_url%/search'
+
+    App\Service\Crawler\BuddySchoolProfileFetcher:
+        calls:
+            - [setBaseUrl, ['%base_url%']]
+
+    App\Service\File\TextFileExporter: ~
+
+    App\Service\File\BuddySchoolProfileFileGenerator:
+        public: true
+        calls:
+            - [setWebPath, ['%kernel.project_dir%/public']]
+
+    App\Service\WebContent\CurlWebContentProvider:
+        calls:
+            - [setLogger, ['@logger']]

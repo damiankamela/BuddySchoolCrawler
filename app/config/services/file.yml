@@ -1,7 +1,0 @@
-services:
-    AppBundle\Service\File\TextFileExporter: ~
-
-    AppBundle\Service\File\BuddySchoolProfileFileGenerator:
-        autowire: true
-        calls:
-            - [setWebPath, ['%kernel.root_dir%/../web']]

@@ -1,4 +1,0 @@
-services:
-    AppBundle\Service\WebContent\CurlWebContentProvider:
-        calls:
-            - [setLogger, ['@logger']]
