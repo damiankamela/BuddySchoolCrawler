@@ -1,4 +1,6 @@
 ## BuddySchoolCrawler
+
+### Technology stack
 * PHP: 7.1.6
 * Symfony 3.3.6
 * Docker
