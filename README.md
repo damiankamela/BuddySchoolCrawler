@@ -1,20 +1,14 @@
 ## BuddySchoolCrawler
 
 ### Technology stack
-* PHP: 7.1.6
-* Symfony 3.3.6
+* PHP: 7.2.*
+* Symfony 4.0.6
 * Docker
 
 ### Docker build
 * build
-  * `mkdir web/files`
-  * `docker-compose build`
   * `docker-compose up -d`
 
-* composer
-  * `docker-compose run --rm composer CMD` 
-    * i.e. `docker-compose run --rm composer install`
-  
 ### tools
    * console
         * connect to php container
