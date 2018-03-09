@@ -10,8 +10,8 @@ use PHPUnit_Framework_MockObject_MockObject as Mock;
 
 class BuddySchoolProfileFileGeneratorTest extends TestCase
 {
-    /** @var BuddySchoolProfileFileGenerator|Mock */
-    protected $generatorMock;
+    /** @var BuddySchoolProfileFileGenerator */
+    protected $generator;
 
     /** @var FileExporterInterface|Mock */
     protected $fileExporterMock;
@@ -24,13 +24,10 @@ class BuddySchoolProfileFileGeneratorTest extends TestCase
         $this->fileExporterMock = $this->createMock(FileExporterInterface::class);
         $this->profileFetcherMock = $this->createMock(BuddySchoolProfileFetcher::class);
 
-        $this->generatorMock = $this->getMockBuilder(BuddySchoolProfileFileGenerator::class)
-            ->setConstructorArgs([
-                $this->fileExporterMock,
-                $this->profileFetcherMock
-            ])
-            ->setMethods(['generateName'])
-            ->getMock();
+        $this->generator = new BuddySchoolProfileFileGenerator(
+            $this->fileExporterMock,
+            $this->profileFetcherMock
+        );
     }
 
     /**
@@ -41,12 +38,7 @@ class BuddySchoolProfileFileGeneratorTest extends TestCase
         $keyword = 'bar';
         $position = 1;
 
-        $this->generatorMock->setWebPath('/var');
-
-        $this->generatorMock
-            ->expects(self::once())
-            ->method('generateName')
-            ->willReturn('foo.txt');
+        $this->generator->setWebPath('/var');
 
         $this->profileFetcherMock
             ->expects(self::once())
@@ -57,8 +49,10 @@ class BuddySchoolProfileFileGeneratorTest extends TestCase
         $this->fileExporterMock
             ->expects(self::once())
             ->method('exportToFile')
-            ->with('/var/files/foo.txt', '<body>baz</body>');
+            ->with($this->stringContains('/var/files/'), '<body>baz</body>');
 
-        $this->generatorMock->generateProfileFile($keyword, $position);
+        $result = $this->generator->generateProfileFile($keyword, $position);
+
+        $this->assertContains('.txt', $result);
     }
 }
