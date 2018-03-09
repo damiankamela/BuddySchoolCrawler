@@ -29,7 +29,7 @@ class BuddySchoolProfileFileGenerator
     /**
      * @param string $webPath
      */
-    public function setWebPath(string $webPath)
+    public function setWebPath(string $webPath): void
     {
         $this->webPath = $webPath;
     }
@@ -39,7 +39,7 @@ class BuddySchoolProfileFileGenerator
      * @param int    $position
      * @return string
      */
-    public function generateProfileFile(string $keyword, int $position = 0)
+    public function generateProfileFile(string $keyword, int $position = 0): string
     {
         $content = $this->profileFetcher->getProfileContent($keyword, $position);
         $name = $this->generateName();
