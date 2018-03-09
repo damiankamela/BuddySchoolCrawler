@@ -6,9 +6,8 @@ RUN apt-get update && apt-get install -y \
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-#RUN useradd admin
-#RUN usermod -s /bin/bash -u 1000 admin
-#USER admin
+RUN pecl install xdebug-2.6.0 \
+    && docker-php-ext-enable xdebug
 
 COPY docker/php-fpm/entrypoint.sh /entrypoint.sh
 RUN chmod 755 /entrypoint.sh
