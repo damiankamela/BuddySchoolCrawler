@@ -21,3 +21,9 @@ $ composer install
 
 ### Launch app
 `http://localhost:7777/`
+
+--- 
+
+### Previous versions (switch branch)
+* master
+* v0.1 (PHP: 7.1.6, Symfony 3.3.6)
