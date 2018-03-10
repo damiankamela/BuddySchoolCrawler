@@ -13,6 +13,11 @@ Allows to search article and download dumped to text file.
 * Travis
 
 ### Docker build
+
+##### First start
+`$ docker-compose up -d --build`
+
+##### Start
 ```
 $ docker-compose up -d
 $ docker exec -it bscrawler-php-fpm bash
